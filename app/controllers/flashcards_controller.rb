@@ -1,11 +1,19 @@
 class FlashcardsController < ApplicationController
-  before_action :set_flashcard, only: [:show, :update, :destroy]
+  # TODO: remember to delete as soon as you know it's not needed.
+  # before_action :set_flashcard, only: [:show, :update, :destroy]
+  before_action :set_flashcard, only: [:show, :tags, :update, :destroy]
+
 
   # GET /flashcards
   def index
     @flashcards = Flashcard.all
 
     render json: @flashcards
+  end
+
+  # GET /flashcards/1/tags
+  def tags
+    @flashcards.tags
   end
 
   # GET /flashcards/1

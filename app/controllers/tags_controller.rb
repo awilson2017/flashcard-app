@@ -1,11 +1,19 @@
 class TagsController < ApplicationController
-  before_action :set_tag, only: [:show, :update, :destroy]
+  # TODO: delete when I know it is not needed.
+  # before_action :set_tag, only: [:show, :update, :destroy]
+  before_action :set_tag, only: [:show, :flashcards, :update, :destroy]
+
 
   # GET /tags
   def index
     @tags = Tag.all
 
     render json: @tags
+  end
+
+  # GET /tags/1/flashcards
+  def flashcards
+    @tag.flashcards
   end
 
   # GET /tags/1
