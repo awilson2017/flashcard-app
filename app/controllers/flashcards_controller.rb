@@ -24,6 +24,7 @@ class FlashcardsController < ApplicationController
   # POST /flashcards
   def create
     @flashcard = Flashcard.new(flashcard_params)
+    # @flashcard.save
 
     if @flashcard.save
       render json: @flashcard, status: :created, location: @flashcard
@@ -54,6 +55,9 @@ class FlashcardsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def flashcard_params
-      params.require(:flashcard).permit(:user_id, :question, :answer)
+      params.permit(:user_id, :question, :answer, :image)
+
+      # TODO: delete when unnecessary
+      # params.require(:flashcard).permit(:user_id, :question, :answer, :image)
     end
 end
