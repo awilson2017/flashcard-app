@@ -24,7 +24,6 @@ class FlashcardsController < ApplicationController
   # POST /flashcards
   def create
     @flashcard = Flashcard.new(flashcard_params)
-    # @flashcard.save
 
     if @flashcard.save
       render json: @flashcard, status: :created, location: @flashcard

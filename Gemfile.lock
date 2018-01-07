@@ -68,6 +68,8 @@ GEM
       dotenv (= 2.2.1)
       railties (>= 3.2, < 5.2)
     erubi (1.7.0)
+    faraday (0.12.2)
+      multipart-post (>= 1.2, < 3)
     ffi (1.9.18)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -105,6 +107,7 @@ GEM
       minitest (>= 5.0)
       ruby-progressbar
     multi_xml (0.6.0)
+    multipart-post (2.0.0)
     nio4r (2.2.0)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
@@ -185,6 +188,7 @@ DEPENDENCIES
   binding_of_caller
   byebug
   dotenv-rails
+  faraday (~> 0.11)
   httparty
   jquery-turbolinks
   listen (>= 3.0.5, < 3.2)
