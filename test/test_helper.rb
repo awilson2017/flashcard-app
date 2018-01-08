@@ -11,6 +11,9 @@ Minitest::Reporters.use!(
   Minitest.backtrace_filter
 )
 
+# Load sample environment.
+require 'dotenv'
+Dotenv.load('.env')
 
 # To add Capybara feature tests add `gem "minitest-rails-capybara"`
 # to the test group in the Gemfile and uncomment the following:
