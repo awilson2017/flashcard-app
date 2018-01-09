@@ -2,6 +2,8 @@ class FlashcardsController < ApplicationController
   # TODO: remember to delete as soon as you know it's not needed.
   # before_action :set_flashcard, only: [:show, :update, :destroy]
   before_action :set_flashcard, only: [:show, :tags, :update, :destroy]
+  before_action :authenticate_user!
+
 
 
   # GET /flashcards

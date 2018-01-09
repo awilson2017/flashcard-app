@@ -2,6 +2,8 @@ class TagsController < ApplicationController
   # TODO: delete when I know it is not needed.
   # before_action :set_tag, only: [:show, :update, :destroy]
   before_action :set_tag, only: [:show, :flashcards, :update, :destroy]
+  before_action :authenticate_user!
+
 
 
   # GET /tags
