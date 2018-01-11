@@ -18,11 +18,26 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      session[:logged_in_user] = @user.id
       render json: @user, status: :created, location: @user
     else
       render json: @user.errors, status: :unprocessable_entity
     end
   end
+
+  def login
+    login = params[:login]
+    user = User.find_by(login: login)
+
+    if user
+      session[:logged_in_user] = user.id
+      render json: { session: user }, status: :ok
+    else
+      render json: { user: nil }, status: :unprocessable_entity
+    end
+  end
+
+  
 
   # PATCH/PUT /users/1
   def update
