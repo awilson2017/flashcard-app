@@ -22,8 +22,6 @@ gem 'puma', '~> 3.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem 'rack-cors'
 
 # Gem to store pics with AWS S3
 gem 'paperclip'
@@ -33,6 +31,8 @@ gem 'dotenv-rails'
 gem 'httparty'
 
 group :development, :test do
+  # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
+  gem 'rack-cors'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
