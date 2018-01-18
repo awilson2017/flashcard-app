@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :tags
   resources :flashcards
   resources :users
+  resources :googles
 
   resources :flashcards do
     get :tags, on: :member  #, shallow: true
@@ -12,6 +13,12 @@ Rails.application.routes.draw do
   resources :tags do
     get :flashcards, on: :member
   end
+
+  resources :users do
+    resources :flashcards
+  end
+
+
 
   # login/logout resources
   post 'login', to: 'users#login'

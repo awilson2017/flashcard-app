@@ -6,9 +6,13 @@ class FlashcardsController < ApplicationController
 
   # GET /flashcards
   def index
-    @flashcards = Flashcard.all
+    if params[:user_id]
+      user = User.find_by(id: params[:user_id])
+      @flashcards = user.flashcards
 
-    render json: @flashcards
+      render json: @flashcards
+    end
+
   end
 
   # GET /flashcards/1/tags
