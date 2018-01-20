@@ -1,6 +1,7 @@
 require 'base64'
 require 'HTTParty'
 
+
 class ApiWrapper
   BASE_URL = "https://translation.googleapis.com/language/translate/v2/"
   GOOGLE_ID = ENV["GOOGLE_ID"]
@@ -28,14 +29,18 @@ class ApiWrapper
     url = "https://apifree.forvo.com/action/word-pronunciations/format/json/word/" + encoded_ko + "/key/#{ENV["FORVO_KEY"]}"
 
     response = HTTParty.get(url)
+    payload = response['items']
 
     audio_files = []
+    payload.each do |audio|
+      audio_object = {}
+      audio_object['country'] = audio['country']
+      audio_object['gender'] = audio['sex']
+      audio_object['mp3'] = audio['pathmp3']
 
-    if response['items'] == 0
-      return []
-    else
-      return response['items']
+      audio_files.push(audio_object)
     end
+    return audio_files
   end
 
 
