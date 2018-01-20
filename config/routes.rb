@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :tags
   resources :flashcards
   resources :users
-  resources :googles
+  # resources :googles
 
   resources :flashcards do
     get :tags, on: :member  #, shallow: true
@@ -19,9 +19,10 @@ Rails.application.routes.draw do
   end
 
 
-
   # login/logout resources
   post 'login', to: 'users#login'
   post 'logout', to: 'users#logout', as: 'logout'
+
+  get 'forvo', to: 'forvos#forvo', as: 'forvo'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
