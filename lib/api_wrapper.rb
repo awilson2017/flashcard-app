@@ -26,6 +26,16 @@ class ApiWrapper
     encoded_ko = hex_array.map { |el| '%' + el }.join
 
     url = "https://apifree.forvo.com/action/word-pronunciations/format/json/word/" + encoded_ko + "/key/#{ENV["FORVO_KEY"]}"
+
+    response = HTTParty.get(url)
+
+    audio_files = []
+
+    if response['items'] == 0
+      return []
+    else
+      return response['items']
+    end
   end
 
 

@@ -1,0 +1,2 @@
+class ForvosController < ApplicationController
+end
