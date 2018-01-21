@@ -8,18 +8,23 @@ class ApiWrapper
 
 
   def self.google_translate(search)
-    url = BASE_URL + "?key=#{GOOGLE_ID}" + "&q=#{search}" + "source=en&target=ko&format=text"
+  # "https://translation.googleapis.com/language/translate/v2/?key=${googleKey}&q=${this.state.word}&"
+    # "source=en&target=ko&format=text"
+url = "https://translation.googleapis.com/language/translate/v2/?key=#{GOOGLE_ID}&q=#{search}&source=en&target=ko&format=text"
+    # url = BASE_URL + "?key=#{GOOGLE_ID}" + "&q=#{search}&" + "source=en&target=ko&format=text"
 
     response = HTTParty.post(url)
+    korean_word = response["data"]["translations"][0]["translatedText"]
+    return korean_word
 
     # need array to store the parsed api hash results
-    translations_list = []
-
-    if response["data"]["translations"] == 0
-      return []
-    else
-      return response["data"]["translations"][0]["translatedText"]
-    end
+    # translations_list = []
+    #
+    # if response["data"]["translations"] == 0
+    #   return []
+    # else
+    #   return response["data"]["translations"][0]["translatedText"]
+    # end
   end
 
   def self.forvo(search)
@@ -42,10 +47,4 @@ class ApiWrapper
     end
     return audio_files
   end
-
-
-  private
-
-
-
 end

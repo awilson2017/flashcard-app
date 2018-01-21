@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   post 'login', to: 'users#login'
   post 'logout', to: 'users#logout', as: 'logout'
 
+  get 'google', to: 'googles#google', as:'google'
   get 'forvo', to: 'forvos#forvo', as: 'forvo'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

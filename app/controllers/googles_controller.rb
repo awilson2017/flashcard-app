@@ -2,17 +2,18 @@ require_dependency '../../lib/api_wrapper'
 
 class GooglesController < ApplicationController
 
-  def create
-    # @flashcard = ApiWrapper.google_translate(params[:search])
+  def google
+    translated_word = ApiWrapper.google_translate(params[:query])
+stuff = "a"
+    render(
+      json: translated_word,
+      status: :ok
+    )
+  end
 
-    if params[:search]
-      @googles = ApiWrapper.google_translate(params[:search])
+  private
 
-      render json: @googles, status: :ok, location: @googles
-    else
-      # flash[:status] = :failure
-      # flash[:message] = "Invalid search term, please search for something else"
-      render json: @googles.errors, status: :unprocessable_entity
-    end
+  def google_params
+    params.require(:google).permit(:query)
   end
 end

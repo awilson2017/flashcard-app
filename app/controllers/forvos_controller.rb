@@ -15,7 +15,6 @@ class ForvosController < ApplicationController
   private
 
   def forvo_params
-    # binding.pry
     params.require(:forvo).permit(:translated)
   end
 end
