@@ -4,7 +4,7 @@ class GooglesController < ApplicationController
 
   def google
     translated_word = ApiWrapper.google_translate(params[:query])
-stuff = "a"
+
     render(
       json: translated_word,
       status: :ok

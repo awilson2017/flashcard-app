@@ -1,3 +1,3 @@
-user_id,question,answer,image_file_name
-2,안녕,hi
-2,먹다,to eat
+id,user_id,question,answer,korean_word,audio_file
+1,2,안녕,hi,korean,audio
+2,2,먹다,to eat,word,file

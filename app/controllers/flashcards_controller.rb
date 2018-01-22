@@ -59,7 +59,7 @@ class FlashcardsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def flashcard_params
-      params.permit(:user_id, :question, :answer, :image)
+      params.permit(:user_id, :question, :answer)
 
       # TODO: delete when unnecessary
       # params.require(:flashcard).permit(:user_id, :question, :answer, :image)
