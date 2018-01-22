@@ -78,8 +78,16 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+# production:
+#   <<: *default
+#   database: flashcard-app_production
+#   username: flashcard-app
+#   password: <%= ENV['FLASHCARD-APP_DATABASE_PASSWORD'] %>
+
 production:
   <<: *default
-  database: flashcard-app_production
-  username: flashcard-app
-  password: <%= ENV['FLASHCARD-APP_DATABASE_PASSWORD'] %>
+  database: <%= ENV['RDS_DB_NAME'] %>
+  username: <%= ENV['RDS_USERNAME'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
+  host: <%= ENV['RDS_HOSTNAME'] %>
+  port: <%= ENV['RDS_PORT'] %>

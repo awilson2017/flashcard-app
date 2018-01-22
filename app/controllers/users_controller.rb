@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   end
 
   def logout
-    
+
     session[:logged_in_user] = nil
     render json: { session: nil }, status: :ok
   end
@@ -65,6 +65,6 @@ class UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:login, :name)
+      params.permit(:login, :name)
     end
 end
