@@ -39,12 +39,12 @@ url = "https://translation.googleapis.com/language/translate/v2/?key=#{GOOGLE_ID
     audio_files = []
     payload.each do |audio|
       audio_object = {}
-      audio_object['country'] = audio['country']
-      audio_object['gender'] = audio['sex']
+      # audio_object['country'] = audio['country']
+      # audio_object['gender'] = audio['sex']
       audio_object['mp3'] = audio['pathmp3']
 
       audio_files.push(audio_object)
     end
-    return audio_files
+    return audio_files[0]
   end
 end
