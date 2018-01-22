@@ -18,8 +18,8 @@ CSV.foreach(FLASHCARD_FILE, :headers => true) do |row|
   flashcard.user_id = row['user_id']
   flashcard.question = row['question']
   flashcard.answer = row['answer']
-  flashcard.korean_word = row['korean_word']
-  flashcard.audio_file = row['audio_file']
+  # flashcard.korean_word = row['korean_word']
+  # flashcard.audio_file = row['audio_file']
 
   puts "Created flashcard: #{flashcard.inspect}"
   successful = flashcard.save
