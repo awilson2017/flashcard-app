@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180122011635) do
+ActiveRecord::Schema.define(version: 20180122181157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,15 +18,17 @@ ActiveRecord::Schema.define(version: 20180122011635) do
   create_table "flashcards", force: :cascade do |t|
     t.bigint "user_id"
     t.text "question"
-    t.text "answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+<<<<<<< HEAD
     t.string "image_file_name"
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
     t.string "korean_word"
     t.string "audio_file"
+=======
+>>>>>>> migrations
     t.index ["user_id"], name: "index_flashcards_on_user_id"
   end
 
