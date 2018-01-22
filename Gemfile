@@ -29,6 +29,7 @@ gem 'aws-sdk', '~> 2.3'
 gem 'dotenv-rails'
 
 gem 'httparty'
+gem 'awesome_print'
 
 group :development, :test do
   # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible

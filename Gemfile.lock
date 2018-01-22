@@ -40,6 +40,7 @@ GEM
       tzinfo (~> 1.1)
     ansi (1.5.0)
     arel (8.0.0)
+    awesome_print (1.8.0)
     aws-sdk (2.10.111)
       aws-sdk-resources (= 2.10.111)
     aws-sdk-core (2.10.111)
@@ -181,6 +182,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   aws-sdk (~> 2.3)
   better_errors
   binding_of_caller

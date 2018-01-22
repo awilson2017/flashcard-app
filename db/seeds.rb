@@ -7,31 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'csv'
-
-FLASHCARD_FILE = Rails.root.join('db', 'seed_data', 'flashcards.csv')
-puts "Loading raw flashcard data from #{FLASHCARD_FILE}"
-
-flashcard_failures = []
-CSV.foreach(FLASHCARD_FILE, :headers => true) do |row|
-  flashcard = Flashcard.new
-  flashcard.id = row['id']
-  flashcard.user_id = row['user_id']
-  flashcard.question = row['question']
-  flashcard.answer = row['answer']
-  flashcard.korean_word = row['korean_word']
-  flashcard.audio_file = row['audio_file']
-
-  puts "Created flashcard: #{flashcard.inspect}"
-  successful = flashcard.save
-  if !successful
-    flashcard_failures << flashcard
-  end
-end
-
-puts "Added #{Flashcard.count} flashcard records"
-puts "#{flashcard_failures.length} flashcards failed to save"
-
-
+require 'awesome_print'
 
 USER_FILE = Rails.root.join('db', 'seed_data', 'users.csv')
 puts "Loading raw user data from #{USER_FILE}"
@@ -50,6 +26,34 @@ end
 
 puts "Added #{User.count} user records"
 puts "#{user_failures.length} users failed to save"
+
+
+FLASHCARD_FILE = Rails.root.join('db', 'seed_data', 'flashcards.csv')
+puts "Loading raw flashcard data from #{FLASHCARD_FILE}"
+
+flashcard_failures = []
+CSV.foreach(FLASHCARD_FILE, :headers => true) do |row|
+  flashcard = Flashcard.new
+  flashcard.id = row['id']
+  flashcard.user_id = row['user_id']
+  flashcard.question = row['question']
+  flashcard.answer = row['answer']
+  # flashcard.korean_word = row['korean_word']
+  # flashcard.audio_file = row['audio_file']
+
+  puts "Created flashcard: #{flashcard.inspect}"
+  successful = flashcard.save
+  if !successful
+    puts flashcard.errors.messages
+    flashcard_failures << flashcard
+  end
+end
+
+puts "Added #{Flashcard.count} flashcard records"
+puts "#{flashcard_failures.length} flashcards failed to save"
+
+
+
 
 #
 #
