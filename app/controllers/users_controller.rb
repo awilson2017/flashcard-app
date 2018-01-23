@@ -33,7 +33,10 @@ class UsersController < ApplicationController
       session[:logged_in_user] = user.id
       render json: { session: user }, status: :ok
     else
-      render json: { user: nil }, status: :unprocessable_entity
+      # session[:logged_in_user] = nil
+      # render json: { session: nil },
+
+      render json: { user: nil }
     end
   end
 
