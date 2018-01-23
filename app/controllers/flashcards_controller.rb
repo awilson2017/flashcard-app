@@ -1,3 +1,4 @@
+require 'pry'
 class FlashcardsController < ApplicationController
   # TODO: remember to delete as soon as you know it's not needed.
   # before_action :set_flashcard, only: [:show, :update, :destroy]
@@ -8,9 +9,24 @@ class FlashcardsController < ApplicationController
   def index
     if params[:user_id]
       user = User.find_by(id: params[:user_id])
-      @flashcards = user.flashcards
+      flashcards = user.flashcards
 
-      render json: @flashcards
+      flashcards_payload = []
+
+      flashcards.each do |card|
+        card_hash = {}
+
+        card_hash[:id] = card.id
+        card_hash[:user_id] = card.user_id
+        card_hash[:question] = card.question
+        # card_hash[:image] = card.image
+        card_hash[:image_url] = card.image.url
+
+        flashcards_payload.push(card_hash)
+        # binding.pry
+      end
+
+      render json: flashcards_payload
     end
 
   end
