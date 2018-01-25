@@ -56,5 +56,7 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 plugin :tmp_restart
 
 # specify socket location for elastic beanstalk
-bind "unix:///var/run/puma/my_app.sock"
-pidfile "/var/run/puma/my_app.sock"
+if ! ENV['LOCAL']
+  bind "unix:///var/run/puma/my_app.sock"
+  pidfile "/var/run/puma/my_app.sock"
+end

@@ -38,7 +38,27 @@ class FlashcardsController < ApplicationController
 
   # GET /flashcards/1
   def show
-    render json: @flashcard
+    if params[:user_id]
+      user = User.find_by(id: params[:user_id])
+      flashcards = user.flashcards
+
+
+
+      card_hash = {}
+      flashcards.each do |card|
+
+        card_hash[:id] = card.id
+        card_hash[:user_id] = card.user_id
+        card_hash[:question] = card.question
+        # card_hash[:image] = card.image
+        card_hash[:image_url] = card.image.url
+
+        # binding.pry
+      end
+
+      render json: card_hash
+    end
+    # render json: @flashcard
   end
 
   # POST /flashcards
